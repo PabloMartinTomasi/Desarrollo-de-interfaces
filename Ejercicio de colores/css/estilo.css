@@ -1,4 +1,4 @@
-/* Tema de  */
+/* Tema de  Naturaleza */
 .card-naturaleza {
     font-family: 'Georgia', serif;
     background-color: #f0f9f4;
@@ -18,19 +18,34 @@
 
 /* Tema de la apicultura */
 .card-apicultura {
-    font-family: 'Georgia', serif;
-    background-color: #FDB813;
-    border: 1px solid #000000;
+    font-family:'Times New Roman', Times, serif;
+    background-color: #FFB300;
+    border: 1px solid #4CAF50;
 }
 
 .card-apicultura .card-title {
-    font-family: 'Arial', sans-serif;
-    color: #2b8b22;
+    font-family:'Courier New', Courier;
+    color: #212121;
     font-weight: bold;
 }
 
 .card-apicultura .card-text {
-    color: #F3E5AB;
+    color: #FFF8E1;
 }
 
-/* Tema de  */
+/* Tema de programador */
+.card-programador {
+    font-family:'Gill Sans', 'Gill Sans MT';
+    background-color: #1E1E1E;
+    border: 1px solid #2196F3;
+}
+
+.card-programador .card-title {
+    font-family:Verdana, Tahoma;
+    color: #39FF14;
+    font-weight: bold;
+}
+
+.card-programador .card-text {
+    color: #E0E0E0;
+}
