@@ -16,22 +16,21 @@
     color: #3b3b3b;
 }
 
-/* Tema de  */
+/* Tema de la apicultura */
 .card-apicultura {
     font-family: 'Georgia', serif;
     background-color: #FDB813;
     border: 1px solid #000000;
 }
 
-.card-naturaleza .card-title {
+.card-apicultura .card-title {
     font-family: 'Arial', sans-serif;
     color: #2b8b22;
-    /* Verde bosque */
     font-weight: bold;
 }
 
-.card-naturaleza .card-text {
-    color: #3b3b3b;
+.card-apicultura .card-text {
+    color: #F3E5AB;
 }
 
 /* Tema de  */
