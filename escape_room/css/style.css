@@ -2,19 +2,97 @@
     background-color: rgb(50, 50, 51);
 }
 
+
 .textoDescriptivo{
     color: aliceblue;
 }
+
 
 .nombreEscapeRoom{
     color: aliceblue;
 }
 
+
 .fecha{
     color: aliceblue;
 }
+
 
 .logo{
     width: 70px;
     height: 70px;
 }
+
+
+ 
+
+
+/*CSS DE SALAS                                                                                               */
+.card-naturaleza {
+  font-family: 'Arial Black', serif;
+  background-color: #f0f9f4;
+  border: 1px solid #ffaf02;
+  font-size: 0.5em solid;
+}
+
+
+.card-title {
+  font-family: 'Arial', sans-serif;
+  color: #c4d105a9;  /* Verde bosque */
+ 
+  font-weight: bold;
+}
+
+
+.card-naturaleza .card-text {
+  color: #c97d0c;
+}
+
+
+.card-fumar .card-text1 {
+  font-family: 'Times New Roman', serif;
+  background-color: #f0f9f4;
+  color: #f8aa00;
+  border: 1px solid #96682d;
+}
+
+
+.card-title1{
+  color: darkorange;
+}
+
+
+.card-delfin .card-text2{
+  font-family: 'Comic Sans', serif;
+  background-color: #f0f9f4;
+  color: #0011f8;
+  border: 1px solid #11d1a7;
+}
+
+
+.card-title2{
+  color: rgb(134, 6, 207);
+}
+
+
+
+
+ 
+.container{
+  display:flex;
+ 
+
+
+}
+
+
+
+
+.row {
+  justify-content: center;
+}
+
+
+
+
+

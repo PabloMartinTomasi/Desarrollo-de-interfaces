@@ -1,0 +1,77 @@
+/*CSS index*/
+.tituloAgencia {
+    text-align: center;
+}
+
+.cardDestinos {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardOfertas {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imagenIndex{
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+}
+
+/*CSS destinos*/
+.tituloDestinos {
+    text-align: center;
+}
+
+.textoFooter {
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 20px;
+}
+
+.card-Paris {
+    border: 1px solid #7e9bec;
+}
+
+.card-Roma {
+    border: 1px solid #7e9bec;
+}
+
+.card-NuevaYork {
+    border: 1px solid #7e9bec;
+}
+
+/*CSS ofertas*/
+.tituloOfertas {
+    text-align: center;
+}
+
+
+/*CSS reserva*/
+.tituloReserva {
+    text-align: center;
+}
+
+.cardFormulario {
+    width: 20rem;
+}
+
+
+
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+}

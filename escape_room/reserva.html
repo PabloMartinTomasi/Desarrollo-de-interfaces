@@ -22,7 +22,7 @@
                     <a class="nav-link" href="index.html">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Salas</a>
+                    <a class="nav-link" href="salas.html">Salas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="reserva.html">Reserva</a>
@@ -34,57 +34,60 @@
         </div>
     </nav>
 
-    <div class="container form-section">
-        <form>
-            <div class="mb-3">
-                <label for="text" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
-            </div>
-            <div class="row mb-3">
-                <div class="col">
-                    <label class="form-label">Sala</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option value=""></option>
-                        <option value="sala1">Sala 1</option>
-                        <option value="sala2">Sala 2</option>
-                        <option value="sala3">Sala 3</option>
-                        <option value="sala4">Sala 4</option>
-                        <option value="sala5">Sala 5</option>
-                        <option value="sala6">Sala 6</option>
-                    </select>
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="container-reserva form-section col-12 col-md-6 col-lg-4">
+            <form>
+                <div class="mb-3">
+                    <br><br>
+                    <label for="text" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
                 </div>
-                <div class="col">
-                    <label class="form-label">Horarios</label>
-                    <select class="form-select" aria-label="Default select example">
-                        <option value=""></option>
-                        <option value="11h">11:00</option>
-                        <option value="12h">12:00</option>
-                        <option value="13h">13:00</option>
-                        <option value="14h">14:00</option>
-                        <option value="15h">15:00</option>
-                        <option value="16h">16:00</option>
-                        <option value="17h">17:00</option>
-                        <option value="18h">18:00</option>
-                        <option value="19h">19:00</option>
-                        <option value="20h">20:00</option>
-                        <option value="21h">21:00</option>
-                    </select>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label">Sala</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option value=""></option>
+                            <option value="sala1">Sala 1</option>
+                            <option value="sala2">Sala 2</option>
+                            <option value="sala3">Sala 3</option>
+                            <option value="sala4">Sala 4</option>
+                            <option value="sala5">Sala 5</option>
+                            <option value="sala6">Sala 6</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">Horarios</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option value=""></option>
+                            <option value="11h">11:00</option>
+                            <option value="12h">12:00</option>
+                            <option value="13h">13:00</option>
+                            <option value="14h">14:00</option>
+                            <option value="15h">15:00</option>
+                            <option value="16h">16:00</option>
+                            <option value="17h">17:00</option>
+                            <option value="18h">18:00</option>
+                            <option value="19h">19:00</option>
+                            <option value="20h">20:00</option>
+                            <option value="21h">21:00</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row text-center mb-3">
-                <div class="col-md-6">
-                    <label for="date" class="form-label"><b>Día de la reserva</b></label>
-                    <input type="date" class="form-control" id="fchaReserva" required>
+                <div class="row text-center mb-3">
+                    <div class="col-md-6">
+                        <label for="date" class="form-label"><b>Día de la reserva</b></label>
+                        <input type="date" class="form-control" id="fchaReserva" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Datos informativos</label>
+                        <textarea class="form-control" rows="5" placeholder="Escribe aquí los datos..."></textarea>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label class="form-label">Datos informativos</label>
-                    <textarea class="form-control" rows="5" placeholder="Escribe aquí los datos..."></textarea>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary rounded-pill px-4">Reservar</button>
                 </div>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary rounded-pill px-4">Reservar</button>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 </body>
 
