@@ -1,20 +1,24 @@
 .index{
-    background-color: rgb(50, 50, 51);
+    background-color: #1b1b1b;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
 }
 
 
-.textoDescriptivo{
-    color: aliceblue;
+.textoDescriptivo {
+    color: #e0e0e0;
+    line-height: 1.6;
 }
 
 
-.nombreEscapeRoom{
-    color: aliceblue;
+.nombreEscapeRoom {
+    color: #ff4c4c;
+    font-weight: bold;
 }
 
 
 .fecha{
-    color: aliceblue;
+    color: #ffa500;
 }
 
 
@@ -30,22 +34,29 @@
 /*CSS DE SALAS                                                                                               */
 .card-naturaleza {
   font-family: 'Arial Black', serif;
-  background-color: #f0f9f4;
-  border: 1px solid #ffaf02;
+  background-color: #2b2b2b;
+  border: 2px solid #ff4c4c;
   font-size: 0.5em solid;
+  color: #f0f0f0;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
+
+.card-naturaleza:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px #ff4c4c;
+}
 
 .card-title {
-  font-family: 'Arial', sans-serif;
-  color: #c4d105a9;  /* Verde bosque */
- 
-  font-weight: bold;
+    font-family: 'Arial Black', sans-serif;
+    color: #ffcc00;
+    font-weight: bold;
+    font-size: 1.2em;
 }
 
 
-.card-naturaleza .card-text {
-  color: #c97d0c;
+.card-naturaleza .card-body p {
+    color: #e0e0e0;
 }
 
 
@@ -74,6 +85,11 @@
   color: rgb(134, 6, 207);
 }
 
+#img_sala {
+    height: 400px;
+    width: 412px;
+}
+
 
 
 
@@ -95,4 +111,17 @@
 
 
 
+.salas{
+  background-color: #1b1b1b;
+}
 
+.reserva{
+  background-color: #1b1b1b;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+}
+
+.nav-link{
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+}
