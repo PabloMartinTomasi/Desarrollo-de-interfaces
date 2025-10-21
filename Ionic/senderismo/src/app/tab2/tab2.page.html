@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Comentario
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Comentario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid class="ion-padding">
+    <ion-row>
+      <ion-col size-md="4" offset-md="4">
+        <form>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Deja tu comentario</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input type="text" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Correo electrónico</ion-label>
+                <ion-input type="email" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="floating">Mensaje</ion-label>
+                <ion-textarea rows="5" required></ion-textarea>
+              </ion-item>
+
+              <ion-button expand="block" class="ion-margin-top" type="submit">
+                Enviar
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
