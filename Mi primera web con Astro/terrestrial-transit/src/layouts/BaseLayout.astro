@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro Basics</title>
+        <style>
+            .nav {
+                display: flex;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                background-color: #333;
+            }
+            .nav li {
+                margin: 0;
+            }
+            .nav a {
+                display: block;
+                padding: 10px 20px;
+                color: white;
+                text-decoration: none;
+            }
+            .nav a:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul class="nav">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/about">Acerca de</a></li>
+                <li><a href="/services">Servicios</a></li>
+                <li><a href="/contact">Contacto</a></li>
+            </ul>
+        </nav>
+        <slot />
+    </body>
+</html>
