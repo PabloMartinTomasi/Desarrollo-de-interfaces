@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="container d-flex justify-content-center mt-5">
+
+    <div class="card shadow p-4" style="max-width: 500px; width: 100%;">
+      <h2 class="text-center mb-4">Formulario de Contacto</h2>
+
+      <form>
+
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Escribe tu nombre">
+        </div>
+
+        <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="apellido" placeholder="Escribe tu apellido">
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="email" placeholder="ejemplo@correo.com">
+        </div>
+
+        <div class="mb-3">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <textarea 
+            class="form-control" 
+            id="mensaje" 
+            rows="4" 
+            placeholder="Escribe tu mensaje...">
+          </textarea>
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-success px-4">Enviar</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</BaseLayout>
