@@ -1,0 +1,11 @@
+<!ELEMENT peliculas (pelicula+)>
+<!ELEMENT pelicula (genero, director, duracion, valoracion, img)>
+<!ATTLIST pelicula
+          anio CDATA #REQUIRED
+          id CDATA #REQUIRED
+          titulo CDATA #REQUIRED>
+<!ELEMENT genero (#PCDATA)>
+<!ELEMENT director (#PCDATA)>
+<!ELEMENT duracion (#PCDATA)>
+<!ELEMENT valoracion (#PCDATA)>
+<!ELEMENT img (#PCDATA)>

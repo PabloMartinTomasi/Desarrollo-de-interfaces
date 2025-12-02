@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE peliculas SYSTEM "file:/C:/Users/CampusFP/Documents/GitHub/Desarrollo-de-interfaces/xml/Ejercicio%201/peliculas.dtd">
+<peliculas>
+    <pelicula id="1" titulo="Interstellar" anio="2014">
+      <genero>Ciencia ficción</genero>
+      <director>Christopher Nolan</director>
+      <duracion>169</duracion>
+      <valoracion>8.6</valoracion>
+      <img>img/Intelestelar.png</img>
+    </pelicula>
+    
+    <pelicula id="2" titulo="The Matrix" anio="1999">
+      <genero>Ciencia ficción</genero>
+      <director>Lana Wachowski, Lilly Wachowski</director>
+      <duracion>136</duracion>
+      <valoracion>8.7</valoracion>
+      <img>img/Matrix.png</img>
+    </pelicula>
+    
+    <pelicula id="3" titulo="Kimetsu no Yaiba: Castillo Infinito" anio="2025">
+      <genero>Animación</genero>
+      <director>Haruo Sotozaki</director>
+      <duracion>155</duracion>
+      <valoracion>8.5</valoracion>
+      <img>img/KimetsuNoYaiba.png</img>
+    </pelicula>
+</peliculas>
