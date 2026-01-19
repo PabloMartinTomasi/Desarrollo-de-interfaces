@@ -37,6 +37,59 @@
         </div>
     </nav>
 
+    <h1 class="centrarTitulo">Informe de indicadores</h1>
+
+    <div class="indicadores row justify-content-center mt-4"></div>
+
+    <script>
+        const apiUrl = 'http://localhost:8081/indicadores/todos';
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener los indicadores');
+                }
+                return response.json();
+            })
+            .then(indicadores => {
+                const contenedor = document.querySelector('.indicadores');
+
+                indicadores.forEach(indicador => {
+                    const divIndicador = document.createElement('div');
+
+                    divIndicador.className = 'col-12 mb-4 d-flex justify-content-center';
+
+                    divIndicador.innerHTML = `
+                                    <div class="card shadow h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">
+                                                Indicador ${indicador.id}
+                                            </h5>
+
+                                            <h6 class="card-subtitle mb-3 text-muted text-center">
+                                                ${indicador.nombre}
+                                            </h6>
+
+                                            <p><b>Categoría:</b> ${indicador.categoria}</p>
+                                            <p><b>Tipo:</b> ${indicador.tipo}</p>
+                                            <p><b>Ámbito:</b> ${indicador.ambito}</p>
+
+                                            <p>${indicador.descripcion}</p>
+
+                                            <p><b>Valor:</b> ${indicador.valor} ${indicador.unidad}</p>
+                                            <p>Fecha: ${indicador.fecha}</p>
+                                        </div>
+                                    </div>
+                                `;
+                    contenedor.appendChild(divIndicador);
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+
     <br>
 </body>
 <footer>
