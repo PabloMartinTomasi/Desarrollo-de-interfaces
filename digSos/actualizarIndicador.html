@@ -10,9 +10,7 @@
 </head>
 
 <body>
-
-    <h1>Modificar Indicador</h1>
-
+    <h1 class="centrarTitulo">Modificar Indicador</h1><br>
 
     <form id="indicadorForm">
         <label for="id">ID</label>
@@ -28,8 +26,7 @@
         <input type="text" id="nombre" name="nombre" placeholder="Nombre del indicador" required />
 
         <label for="descripcion">Descripción</label>
-        <textarea id="descripcion" name="descripcion" placeholder="Descripción del indicador" rows="3"
-            required></textarea>
+        <textarea id="descripcion" name="descripcion" placeholder="Descripción del indicador" rows="3" required></textarea>
 
         <label for="valor">Valor</label>
         <input type="text" id="valor" name="valor" placeholder="Valor del indicador" required />
@@ -46,7 +43,6 @@
         <a href="listarIndicador.html" type="submit" class="btn btn-primary" onclick="guardarIndicador()">Guardar</a>
         <a href="listarIndicador.html" class="btn btn-danger">Volver</a>
     </form>
-
 
     <div class="message" id="message"></div>
 
@@ -69,7 +65,6 @@
             }
         }
 
-        // Enviar formulario: POST para nuevo, PUT para actualizar si hay id
         async function guardarIndicador() {
             const form = document.getElementById("indicadorForm");
             const formData = new FormData(form);

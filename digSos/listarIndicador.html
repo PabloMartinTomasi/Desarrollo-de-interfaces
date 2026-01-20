@@ -12,9 +12,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">EcoData Solution S.L</a>
+            <img src="img/Logo.png" class="mt-4" alt="Logo EcoData Solutions" width="150" height="50">
 
-            <!-- Botón hamburguesa -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -22,87 +21,166 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
                         <a class="nav-link" href="index.html">Index</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="listarIndicador.html">Indicadores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="informesIndicadores.html">Informe</a>
+                        <a class="nav-link active" href="listarIndicador.html">Indicadores</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <h1 class="centrarTitulo">Listado de indicadores</h1>
-    <a href="agregarIndicador.html" class="btn btn-primary">Agregar Indicador</a>
+    <h1 class="centrarTitulo">Listado de indicadores</h1><br>
+
+    <div class="container mb-3">
+        <div class="row justify-content-center align-items-end">
+            <div class="col-md-4">
+                <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
+                <select id="filtroTipo" class="form-select" onchange="filtros()">
+                    <option value="">Todos</option>
+                    <option value="Digitalización">Digitalización</option>
+                    <option value="Sostenibilidad">Sostenibilidad</option>
+                </select>
+            </div>
+
+            <div class="col-md-4">
+                <label for="filtroAmbito" class="form-label">Filtrar por ámbito</label>
+                <select id="filtroAmbito" class="form-select" onchange="filtros()">
+                    <option value="">Todos</option>
+                    <option value="Empresa">Empresa</option>
+                    <option value="Departamento">Departamento</option>
+                    <option value="Proceso">Proceso</option>
+                    <option value="Servicio">Servicio</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="agregarIndicador.html" class="btn btn-primary" id="agregarIndicador">Agregar Indicador</a>
 
     <table id="indicadores-table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Tipo</th>
-                <th>Categoria</th>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Valor</th>
-                <th>Unidad</th>
-                <th>Fecha</th>
-                <th>Ambito</th>
-                <th>Acciones</th>
+                <th scope="col">Informe</th>
+                <th scope="col">ID</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Unidad</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Ambito</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
             <!-- Filas generadas por JavaScript -->
         </tbody>
     </table>
+    <br><br>
 
 
     <script>
         const apiUrl = 'http://localhost:8081/indicadores/todos';
 
-        // Función para mostrar los indicadores
+        let indicadoresGlobal = [];
+
         function cargarIndicadores() {
             fetch(apiUrl)
                 .then(response => {
-                    if (!response.ok) throw new Error('Error al obtener los datos de la API');
+                    if (!response.ok) {
+                        throw new Error('Error al obtener los datos');
+                    }
                     return response.json();
                 })
                 .then(indicadores => {
-                    const tbody = document.querySelector('#indicadores-table tbody');
-                    tbody.innerHTML = "";
-
-                    indicadores.forEach(indicador => {
-                        const fila = document.createElement('tr');
-                        fila.innerHTML = `
-                    <td>${indicador.id}</td>
-                    <td>${indicador.tipo}</td>
-                    <td>${indicador.categoria}</td>
-                    <td>${indicador.nombre}</td>
-                    <td>${indicador.descripcion}</td>
-                    <td>${indicador.valor}</td>
-                    <td>${indicador.unidad}</td>
-                    <td>${indicador.fecha}</td>
-                    <td>${indicador.ambito}</td>
-                    <td>
-                        <button class="btn btn-primary" onclick="modificarIndicador(${indicador.id})">Modificar</button>
-                        <button class="btn btn-danger" onclick="eliminarIndicador(${indicador.id})">Eliminar</button>
-                    </td>
-                `;
-                        tbody.appendChild(fila);
-                    });
+                    indicadoresGlobal = indicadores;
+                    mostrarIndicadores(indicadoresGlobal);
                 })
                 .catch(error => console.error('Error:', error));
+        }
+
+        function mostrarIndicadores(lista) {
+            const tbody = document.querySelector('#indicadores-table tbody');
+            tbody.innerHTML = "";
+
+            lista.forEach(indicador => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                <td>
+                    <button class="btn btn-link p-0" onclick="verInformeIncidador(${indicador.id})">
+                        <img src="img/Libro.png" alt="Informe" width="20" height="20">
+                    </button>
+                </td>
+                <td>${indicador.id}</td>
+                <td>${indicador.tipo}</td>
+                <td>${indicador.categoria}</td>
+                <td>${indicador.nombre}</td>
+                <td>${indicador.descripcion}</td>
+                <td>${indicador.valor}</td>
+                <td>${indicador.unidad}</td>
+                <td>${indicador.fecha}</td>
+                <td>${indicador.ambito}</td>
+                <td class="d-flex justify-content-center gap-2">
+                    <button class="btn btn-link p-0" onclick="modificarIndicador(${indicador.id})">
+                        <img src="img/Modificar.png" alt="Modificar" width="20" height="20">
+                    </button>
+                    <button class="btn btn-link p-0" onclick="eliminarIndicador(${indicador.id})">
+                        <img src="img/Eliminar.png" alt="Eliminar" width="20" height="20">
+                    </button>
+                </td>
+            `;
+                tbody.appendChild(fila);
+            });
+        }
+
+        function verInformeIncidador(id) {
+            window.location.href = "informeIndicador.html?id=" + id;
         }
 
         function modificarIndicador(id) {
             window.location.href = "actualizarIndicador.html?id=" + id;
         }
+
+        function eliminarIndicador(id) {
+            if (confirm("¿Estás seguro de que deseas eliminar este indicador?")) {
+                fetch(`http://localhost:8081/indicadores/eliminar/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Error al eliminar el indicador");
+                        }
+                        alert("Indicador eliminado correctamente");
+                        cargarIndicadores();
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("No se ha podido eliminar el indicador");
+                    });
+            }
+        }
+
+        function filtros() {
+            const tipo = document.getElementById('filtroTipo').value;
+            const ambito = document.getElementById('filtroAmbito').value;
+
+            const filtrados = indicadoresGlobal.filter(indicador => {
+                return (tipo === "" || indicador.tipo === tipo) &&
+                    (ambito === "" || indicador.ambito === ambito);
+            });
+
+            mostrarIndicadores(filtrados);
+        }
+
         cargarIndicadores();
     </script>
+
 
 
 </body>
