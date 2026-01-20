@@ -10,9 +10,10 @@
 </head>
 
 <body>
+    <!-- barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <img src="img/Logo.png" class="mt-4" alt="Logo EcoData Solutions" width="150" height="50">
+            <img src="img/Logo.png" class="mt-4" alt="Logo EcoData Solutions" width="150" height="50"><!-- logo de la web -->
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -23,10 +24,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Index</a>
+                        <a class="nav-link" href="index.html">Index</a><!-- pantalla de index -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="listarIndicador.html">Indicadores</a>
+                        <a class="nav-link active" href="listarIndicador.html">Indicadores</a><!-- pantalla de lista de los indicadores -->
                     </li>
                 </ul>
             </div>
@@ -35,6 +36,7 @@
 
     <h1 class="centrarTitulo">Listado de indicadores</h1><br>
 
+    <!-- control de los filtro, en mi caso los filtros son de tipo y de ámbito -->
     <div class="container mb-3">
         <div class="row justify-content-center align-items-end">
             <div class="col-md-4">
@@ -60,8 +62,10 @@
     </div>
 
 
+    <!-- boton para que manda al usuario a otra pantalla para poder agregar un nuevo indicador -->
     <a href="agregarIndicador.html" class="btn btn-primary" id="agregarIndicador">Agregar Indicador</a>
 
+    <!-- tabla para poder lista todos los indicadores -->
     <table id="indicadores-table">
         <thead>
             <tr>
@@ -85,11 +89,13 @@
     <br><br>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const apiUrl = 'http://localhost:8081/indicadores/todos';
 
         let indicadoresGlobal = [];
 
+        //funcion de cargar todos los indicadores
         function cargarIndicadores() {
             fetch(apiUrl)
                 .then(response => {
@@ -105,12 +111,14 @@
                 .catch(error => console.error('Error:', error));
         }
 
+        //funcion de mostrar todos los indicadores
         function mostrarIndicadores(lista) {
             const tbody = document.querySelector('#indicadores-table tbody');
             tbody.innerHTML = "";
 
             lista.forEach(indicador => {
                 const fila = document.createElement('tr');
+                //aqui se imprime cada uno de los indicadores, ademas de un boton para poder ver el informe de un indicador y al final 2 botones para poder editar y eliminar un indicador
                 fila.innerHTML = `
                 <td>
                     <button class="btn btn-link p-0" onclick="verInformeIncidador(${indicador.id})">
@@ -139,24 +147,27 @@
             });
         }
 
+        //funcion que envia al usuario, a una ventana externa para poder ver el informe de el indicador que haya selcionado
         function verInformeIncidador(id) {
             window.location.href = "informeIndicador.html?id=" + id;
         }
 
+        //funcion para poder enviar al usuario, a una ventana que le permita modificar los datos de un indicador
         function modificarIndicador(id) {
             window.location.href = "actualizarIndicador.html?id=" + id;
         }
 
+        //funcion para eliminar un indicador
         function eliminarIndicador(id) {
-            if (confirm("¿Estás seguro de que deseas eliminar este indicador?")) {
-                fetch(`http://localhost:8081/indicadores/eliminar/${id}`, {
+            if (confirm("¿Estás seguro de que deseas eliminar este indicador?")) {//mensaje para poder confirma de que se puede eliminar el indicador
+                fetch(`http://localhost:8081/indicadores/eliminar/${id}`, { //sentencia para poder eliminar el indicador con el id selecionado en un principio
                     method: 'DELETE'
                 })
                     .then(response => {
                         if (!response.ok) {
                             throw new Error("Error al eliminar el indicador");
                         }
-                        alert("Indicador eliminado correctamente");
+                        alert("Indicador eliminado correctamente");//mensaje para confirmar de que se ha eliminado el indicador de forma correcta
                         cargarIndicadores();
                     })
                     .catch(error => {
@@ -166,6 +177,7 @@
             }
         }
 
+        //funcion de los filtros
         function filtros() {
             const tipo = document.getElementById('filtroTipo').value;
             const ambito = document.getElementById('filtroAmbito').value;
