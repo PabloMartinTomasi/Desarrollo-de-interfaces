@@ -95,7 +95,6 @@
 
         let indicadoresGlobal = [];
 
-        //funcion de cargar todos los indicadores
         function cargarIndicadores() {
             fetch(apiUrl)
                 .then(response => {
@@ -111,14 +110,12 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        //funcion de mostrar todos los indicadores
         function mostrarIndicadores(lista) {
             const tbody = document.querySelector('#indicadores-table tbody');
             tbody.innerHTML = "";
 
             lista.forEach(indicador => {
                 const fila = document.createElement('tr');
-                //aqui se imprime cada uno de los indicadores, ademas de un boton para poder ver el informe de un indicador y al final 2 botones para poder editar y eliminar un indicador
                 fila.innerHTML = `
                 <td>
                     <button class="btn btn-link p-0" onclick="verInformeIncidador(${indicador.id})">
@@ -147,27 +144,24 @@
             });
         }
 
-        //funcion que envia al usuario, a una ventana externa para poder ver el informe de el indicador que haya selcionado
         function verInformeIncidador(id) {
             window.location.href = "informeIndicador.html?id=" + id;
         }
 
-        //funcion para poder enviar al usuario, a una ventana que le permita modificar los datos de un indicador
         function modificarIndicador(id) {
             window.location.href = "actualizarIndicador.html?id=" + id;
         }
 
-        //funcion para eliminar un indicador
         function eliminarIndicador(id) {
-            if (confirm("¿Estás seguro de que deseas eliminar este indicador?")) {//mensaje para poder confirma de que se puede eliminar el indicador
-                fetch(`http://localhost:8081/indicadores/eliminar/${id}`, { //sentencia para poder eliminar el indicador con el id selecionado en un principio
+            if (confirm("¿Estás seguro de que deseas eliminar este indicador?")) {
+                fetch(`http://localhost:8081/indicadores/eliminar/${id}`, {
                     method: 'DELETE'
                 })
                     .then(response => {
                         if (!response.ok) {
                             throw new Error("Error al eliminar el indicador");
                         }
-                        alert("Indicador eliminado correctamente");//mensaje para confirmar de que se ha eliminado el indicador de forma correcta
+                        alert("Indicador eliminado correctamente");
                         cargarIndicadores();
                     })
                     .catch(error => {
@@ -177,7 +171,6 @@
             }
         }
 
-        //funcion de los filtros
         function filtros() {
             const tipo = document.getElementById('filtroTipo').value;
             const ambito = document.getElementById('filtroAmbito').value;
