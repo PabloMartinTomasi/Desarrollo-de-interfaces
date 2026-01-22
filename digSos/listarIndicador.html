@@ -10,10 +10,9 @@
 </head>
 
 <body>
-    <!-- barra de navegacion -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <img src="img/Logo.png" class="mt-4" alt="Logo EcoData Solutions" width="150" height="50"><!-- logo de la web -->
+            <img src="img/Logo.png" class="mt-4" alt="Logo EcoData Solutions" width="150" height="50">
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -24,10 +23,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Index</a><!-- pantalla de index -->
+                        <a class="nav-link" href="index.html">Index</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="listarIndicador.html">Indicadores</a><!-- pantalla de lista de los indicadores -->
+                        <a class="nav-link active" href="listarIndicador.html">Indicadores</a>
                     </li>
                 </ul>
             </div>
@@ -36,15 +35,12 @@
 
     <h1 class="centrarTitulo">Listado de indicadores</h1><br>
 
-    <!-- control de los filtro, en mi caso los filtros son de tipo y de ámbito -->
     <div class="container mb-3">
         <div class="row justify-content-center align-items-end">
             <div class="col-md-4">
                 <label for="filtroTipo" class="form-label">Filtrar por tipo</label>
                 <select id="filtroTipo" class="form-select" onchange="filtros()">
                     <option value="">Todos</option>
-                    <option value="Digitalización">Digitalización</option>
-                    <option value="Sostenibilidad">Sostenibilidad</option>
                 </select>
             </div>
 
@@ -52,20 +48,13 @@
                 <label for="filtroAmbito" class="form-label">Filtrar por ámbito</label>
                 <select id="filtroAmbito" class="form-select" onchange="filtros()">
                     <option value="">Todos</option>
-                    <option value="Empresa">Empresa</option>
-                    <option value="Departamento">Departamento</option>
-                    <option value="Proceso">Proceso</option>
-                    <option value="Servicio">Servicio</option>
                 </select>
             </div>
         </div>
     </div>
 
-
-    <!-- boton para que manda al usuario a otra pantalla para poder agregar un nuevo indicador -->
     <a href="agregarIndicador.html" class="btn btn-primary" id="agregarIndicador">Agregar Indicador</a>
 
-    <!-- tabla para poder lista todos los indicadores -->
     <table id="indicadores-table">
         <thead>
             <tr>
@@ -88,23 +77,20 @@
     </table>
     <br><br>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const apiUrl = 'http://localhost:8081/indicadores/todos';
-
         let indicadoresGlobal = [];
 
         function cargarIndicadores() {
             fetch(apiUrl)
                 .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Error al obtener los datos');
-                    }
+                    if (!response.ok) throw new Error('Error al obtener los datos');
                     return response.json();
                 })
                 .then(indicadores => {
                     indicadoresGlobal = indicadores;
+                    llenarSelects();
                     mostrarIndicadores(indicadoresGlobal);
                 })
                 .catch(error => console.error('Error:', error));
@@ -117,29 +103,29 @@
             lista.forEach(indicador => {
                 const fila = document.createElement('tr');
                 fila.innerHTML = `
-                <td>
-                    <button class="btn btn-link p-0" onclick="verInformeIncidador(${indicador.id})">
-                        <img src="img/Libro.png" alt="Informe" width="20" height="20">
-                    </button>
-                </td>
-                <td>${indicador.id}</td>
-                <td>${indicador.tipo}</td>
-                <td>${indicador.categoria}</td>
-                <td>${indicador.nombre}</td>
-                <td>${indicador.descripcion}</td>
-                <td>${indicador.valor}</td>
-                <td>${indicador.unidad}</td>
-                <td>${indicador.fecha}</td>
-                <td>${indicador.ambito}</td>
-                <td class="d-flex justify-content-center gap-2">
-                    <button class="btn btn-link p-0" onclick="modificarIndicador(${indicador.id})">
-                        <img src="img/Modificar.png" alt="Modificar" width="20" height="20">
-                    </button>
-                    <button class="btn btn-link p-0" onclick="eliminarIndicador(${indicador.id})">
-                        <img src="img/Eliminar.png" alt="Eliminar" width="20" height="20">
-                    </button>
-                </td>
-            `;
+                    <td>
+                        <button class="btn btn-link p-0" onclick="verInformeIncidador(${indicador.id})">
+                            <img src="img/Libro.png" alt="Informe" width="20" height="20">
+                        </button>
+                    </td>
+                    <td>${indicador.id}</td>
+                    <td>${indicador.tipo}</td>
+                    <td>${indicador.categoria}</td>
+                    <td>${indicador.nombre}</td>
+                    <td>${indicador.descripcion}</td>
+                    <td>${indicador.valor}</td>
+                    <td>${indicador.unidad}</td>
+                    <td>${indicador.fecha}</td>
+                    <td>${indicador.ambito}</td>
+                    <td class="d-flex justify-content-center gap-2">
+                        <button class="btn btn-link p-0" onclick="modificarIndicador(${indicador.id})">
+                            <img src="img/Modificar.png" alt="Modificar" width="20" height="20">
+                        </button>
+                        <button class="btn btn-link p-0" onclick="eliminarIndicador(${indicador.id})">
+                            <img src="img/Eliminar.png" alt="Eliminar" width="20" height="20">
+                        </button>
+                    </td>
+                `;
                 tbody.appendChild(fila);
             });
         }
@@ -154,13 +140,9 @@
 
         function eliminarIndicador(id) {
             if (confirm("¿Estás seguro de que deseas eliminar este indicador?")) {
-                fetch(`http://localhost:8081/indicadores/eliminar/${id}`, {
-                    method: 'DELETE'
-                })
+                fetch(`http://localhost:8081/indicadores/eliminar/${id}`, { method: 'DELETE' })
                     .then(response => {
-                        if (!response.ok) {
-                            throw new Error("Error al eliminar el indicador");
-                        }
+                        if (!response.ok) throw new Error("Error al eliminar el indicador");
                         alert("Indicador eliminado correctamente");
                         cargarIndicadores();
                     })
@@ -176,17 +158,47 @@
             const ambito = document.getElementById('filtroAmbito').value;
 
             const filtrados = indicadoresGlobal.filter(indicador => {
-                return (tipo === "" || indicador.tipo === tipo) &&
-                    (ambito === "" || indicador.ambito === ambito);
+                const tipoValido = tipo === "" || indicador.tipo === tipo;
+                const ambitosArray = indicador.ambito.split(',').map(a => a.trim());
+                const ambitoValido = ambito === "" || ambitosArray.includes(ambito);
+                return tipoValido && ambitoValido;
             });
 
             mostrarIndicadores(filtrados);
         }
 
+        function llenarSelects() {
+            const filtroTipo = document.getElementById('filtroTipo');
+            const filtroAmbito = document.getElementById('filtroAmbito');
+
+            filtroTipo.innerHTML = '<option value="">Todos</option>';
+            filtroAmbito.innerHTML = '<option value="">Todos</option>';
+
+            const tipos = new Set();
+            const ambitos = new Set();
+
+            indicadoresGlobal.forEach(indicador => {
+                tipos.add(indicador.tipo);
+                indicador.ambito.split(',').map(a => a.trim()).forEach(a => ambitos.add(a));
+            });
+
+            tipos.forEach(tipo => {
+                const option = document.createElement('option');
+                option.value = tipo;
+                option.textContent = tipo;
+                filtroTipo.appendChild(option);
+            });
+
+            ambitos.forEach(ambito => {
+                const option = document.createElement('option');
+                option.value = ambito;
+                option.textContent = ambito;
+                filtroAmbito.appendChild(option);
+            });
+        }
+
         cargarIndicadores();
     </script>
-
-
 
 </body>
 <footer>
